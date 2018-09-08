@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $name = 'Bruno';
+    return view('welcome', compact('name'));
+});
+
+Route::get('/product/{id}', function () {
+    $productID = DB::table('product')->find($id);
+    return view('product', compact['productID']);
+});
+
+Route::get('/item/{id}', function () {
+    return view('item');
 });

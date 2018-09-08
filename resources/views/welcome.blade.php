@@ -80,6 +80,7 @@
                 <div class="title m-b-md">
                     Share It!
                 </div>
+                <div>Hello, {{$name}}!</div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
