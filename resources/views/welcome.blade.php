@@ -59,7 +59,18 @@
             }
 
             .m-b-md {
+                margin-top: 0px;
                 margin-bottom: 30px;
+            }
+
+            .footer {
+                font-size: 11px;
+                padding-top: 30%;
+            }
+
+            .footer > a{
+                font-size: 10px;
+                text-transform: none;
             }
         </style>
     </head>
@@ -80,15 +91,20 @@
                 <div class="title m-b-md">
                     Share It!
                 </div>
-                <div>Hello, {{$name}}!</div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                    <a href="/help">Help</a>
+
+                    <!--<a href="https://github.com/laravel/laravel">GitHub</a>-->
+                </div>
+                <div>
+                    <br>     
+                </div>
+                <div class="links footer">
+                    <a href="https://brunofontes.net">By Bruno Fontes</a>
+                    <p>© 2018 Bruno Fontes All Rights Reserved</p>
                 </div>
             </div>
         </div>
