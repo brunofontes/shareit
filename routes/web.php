@@ -19,3 +19,6 @@ Route::get('/product', 'ProductController@index');
 Route::get('/product/{product}', 'ProductController@show');
 Route::get('/item', 'ItemController@index');
 Route::get('/item/{item}', 'ItemController@show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
