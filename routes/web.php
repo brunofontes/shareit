@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-    $name = 'Bruno';
-    return view('welcome', compact('name'));
+    return view('welcome');
 });
 
 Route::get('/product', 'ProductController@index');
