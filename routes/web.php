@@ -16,11 +16,7 @@ Route::get('/', function () {
     return view('welcome', compact('name'));
 });
 
-Route::get('/product/{id}', function () {
-    $productID = DB::table('product')->find($id);
-    return view('product', compact['productID']);
-});
-
-Route::get('/item/{id}', function () {
-    return view('item');
-});
+Route::get('/product', 'ProductController@index');
+Route::get('/product/{product}', 'ProductController@show');
+Route::get('/item', 'ItemController@index');
+Route::get('/item/{item}', 'ItemController@show');
