@@ -6,7 +6,7 @@ Cada usuário, identificado por e-mail, pode ter outros amigos
 
 usuário(nome, email)
 product[site/software](nome, admin)
-userPerProduct(productID, userID)
+productUsers(productID, userID)
 item[licença](nome, productID, usedBy, usedSince)
 waiting(userID, itemID, waitingSince)
 
