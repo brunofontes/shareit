@@ -14,7 +14,12 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h4>Your itens</h4>
+                    @forelse ($items as $item)
+                        <li>{{$item.name}}</li>
+                    @empty
+                        <p>There are no items for you yet. Include one <a href="/product">here.</a></p>
+                    @endforelse
                 </div>
             </div>
         </div>
