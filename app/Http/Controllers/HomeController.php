@@ -23,7 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $items = \App\Item::where('userID');
+        $items = \DB::table('items')
+            ->join('item_user', 'item_user.item_id', '=', 'items.id')
+            ->where('item_user.user_id', \Auth::id())
+            ->select('items.*')
+            ->get();
         return view('home', compact('items'));
     }
 }

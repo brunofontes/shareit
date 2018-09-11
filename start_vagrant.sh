@@ -1,3 +1,3 @@
-source ~/.zshrc
+#source ~/.zshrc
 vagrant up
 ssh homestead -t "cd code/Bruno\ Fontes/shareit; bash --login"
