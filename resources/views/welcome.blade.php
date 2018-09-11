@@ -93,11 +93,15 @@
                 </div>
 
                 <div class="links">
-                    <a href="/login">Login</a>
-                    <a href="/register">Register</a>
-                    <a href="/help">Help</a>
-
-                    <!--<a href="https://github.com/laravel/laravel">GitHub</a>-->
+                    @auth
+                        <a href="/home">Home</a>
+                        <a href="/product">Products</a>
+                        <a href="/item">Items</a>
+                    @else
+                        <a href="/register">Register</a>
+                        <a href="/login">Login</a>
+                    @endauth
+                        <a href="/help">Help</a>
                 </div>
                 <div>
                     <br>     
