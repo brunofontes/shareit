@@ -8,7 +8,6 @@ use \App\User;
 
 class ProductController extends Controller
 {
-    //
     public function index()
     {
         $products = Product::where('adminID', \Auth::id())->get();

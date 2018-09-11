@@ -9,13 +9,13 @@
             <div class="form-group">
                 {{ csrf_field() }}
                 <div class="col"><label for="product">Add Item: </label></div>
-                <div class="col-6"><input type="text" class="form-control" name="item" id="item" placeholder="One Hundred Years of Solitude"></div>
+                <div class="col-6"><input type="text" class="form-control" name="item" id="item" placeholder="One Hundred Years of Solitude" required></div>
                 <div class="col"><button type="submit" class="btn btn-primary">Insert</button></div>
             </div>
+            @include ('layouts.errors')
             </form>
-            <p><br></p>
 
-            <div class="card">
+            <div class="card mt-4">
                 <div class="card-header">
                     Product: <strong>{{$product['name']}}</strong>
                     <span class="d-inline-block text-truncat float-right">Edit - Delete</span>
@@ -34,7 +34,6 @@
                         <p>There are no items yet. Include one with the form above.</p>
                     @endforelse
                     </ul>
-
                 </div>
             </div>
         </div>

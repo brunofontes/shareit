@@ -9,13 +9,13 @@
             <div class="form-group">
                 {{ csrf_field() }}
                 <div class="col"><label for="product">Add Product: </label></div>
-                <div class="col-6"><input type="text" class="form-control" name="product" id="product" placeholder="Book"></div>
+                <div class="col-6"><input type="text" class="form-control" name="product" id="product" placeholder="Book" required></div>
                 <div class="col"><button type="submit" class="btn btn-primary">Insert</button></div>
             </div>
+            @include ('layouts.errors')
             </form>
-            <p><br></p>
 
-            <div class="card">
+            <div class="card mt-4">
                 <div class="card-header">Products</div>
 
                 <div class="card-body">
