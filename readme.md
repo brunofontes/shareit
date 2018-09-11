@@ -4,11 +4,11 @@ Cada usuário, identificado por e-mail, pode ter outros amigos
 
 ## DB
 
-usuário(nome, email)
-product[site/software](nome, admin)
-productUsers(productID, userID)
-item[licença](nome, productID, usedBy, usedSince)
-waiting(userID, itemID, waitingSince)
+[x] usuário(nome, email)
+[x] product[site/software](nome, admin)
+[ ] usersPerItem(productID, userID)
+[x] item[licença](nome, productID, usedBy, usedSince)
+[ ] waiting(userID, itemID, waitingSince)
 
 ## VIEWS
 
