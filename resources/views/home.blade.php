@@ -16,9 +16,18 @@
 
                     <h4>Your itens</h4>
                     @forelse ($items as $item)
-                        <li>{{$item.name}}</li>
+                        <li>
+                            {{$item->name}}
+                            @if ($item->usedSince)
+                                <div class="alert">
+                                In use by {{$item->usedBy}}, since {{$item->usedSince->diffForHumans()}}
+                                </div>
+                            @else
+                                <a href="">TAKE IT</a>
+                            @endif
+                        </li>
                     @empty
-                        <p>There are no items for you yet. Include one <a href="/product">here.</a></p>
+                        <p>There are no items for you yet. Include a product or an item <a href="/product">here.</a></p>
                     @endforelse
                 </div>
             </div>

@@ -18,8 +18,12 @@ Route::get('/', function () {
 Route::get('/product', 'ProductController@index')->middleware('auth');
 Route::get('/product/{product}', 'ProductController@show')->middleware('auth');
 Route::post('/product', 'ProductController@store')->middleware('auth');
+
 Route::get('/item', 'ItemController@index')->middleware('auth');
 Route::get('/item/{item}', 'ItemController@show')->middleware('auth');
+Route::post('/item', 'ItemController@store')->middleware('auth');
+Route::delete('/item/{item}', 'ItemController@delete')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

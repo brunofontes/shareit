@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsersPerItem extends Migration
+class ItemUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class UsersPerItem extends Migration
      */
     public function up()
     {
-        Schema::create('users_per_item', function (Blueprint $table) {
+        Schema::create('item_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('productID');
-            $table->integer('userID');
+            $table->integer('item_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class UsersPerItem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_per_item');
+        Schema::dropIfExists('item_user');
     }
 }
