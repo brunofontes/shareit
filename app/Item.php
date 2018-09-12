@@ -13,6 +13,11 @@ class Item extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function free($product_id, $user_id)
     {
         return $query->where([

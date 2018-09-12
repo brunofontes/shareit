@@ -4,20 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-            <form method="POST" action="/item" class="form-inline">
-            <div class="form-group">
-                {{ csrf_field() }}
-                <div class="col"><label for="product">Add Item: </label></div>
-                <div class="col-6"><input type="text" class="form-control" name="item" id="item" placeholder="One Hundred Years of Solitude" required></div>
-                <div class="col"><button type="submit" class="btn btn-primary">Insert</button></div>
-            </div>
-            @include ('layouts.errors')
-            </form>
-
             <div class="card mt-4">
                 <div class="card-header">
-                    Item: <strong>{{$item[0]->name}}</strong>
+                    Item: <strong>{{$item->name}}</strong>
                     @include ('item.buttons')
                 </div>
 

@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('admin_id', \Auth::id())->get();
+        $products = Product::where('user_id', \Auth::id())->get();
         return view('product.index', compact('products'));
     }
 
@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function store()
     {
-        Product::create(['name' => request('product'), 'admin_id' => \Auth::id()]); //Just remember to add the fillable on Model to make this work
+        Product::create(['name' => request('product'), 'user_id' => \Auth::id()]); //Just remember to add the fillable on Model to make this work
         return redirect('product');
     }
 
@@ -41,7 +41,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::where('admin_id', \Auth::id())->find($id);
+        $product = Product::where('user_id', \Auth::id())->find($id);
         return view('product.show', compact('product'));
     }
 }
