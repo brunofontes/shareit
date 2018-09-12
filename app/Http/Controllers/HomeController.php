@@ -25,8 +25,10 @@ class HomeController extends Controller
     {
         $items = \DB::table('items')
             ->join('item_user', 'item_user.item_id', '=', 'items.id')
+            ->join('products', 'products.id', '=', 'items.id')
             ->where('item_user.user_id', \Auth::id())
-            ->select('items.*')
+            ->select('items.*', 'products.name as pname')
+            ->orderBy('items.name')
             ->get();
         return view('home', compact('items'));
     }
