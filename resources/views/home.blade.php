@@ -17,13 +17,24 @@
                     <h4>Your itens</h4>
                     @forelse ($items as $item)
                         <li>
-                            {{$item->name}}
-                            @if ($item->usedSince)
-                                <div class="alert">
-                                In use by {{$item->usedBy}}, since {{$item->usedSince->diffForHumans()}}
-                                </div>
+                            <strong>{{$item->name}}</strong> ({{$item->pname}})
+
+                            @if ($item->usedBy)
+                                @if ($item->usedBy == \Auth::id())
+                                    <span class="float-right">
+                                        <form action="/item/{{$item->id}}" method="POST">
+                                            <button type="button" class="btn btn-danger" disabled>Return It</button>
+                                        </form>
+                                    </span>
+                                @else
+                                    <div class="alert alert-danger" role="alert">In use by {{$item->usedBy}}, since {{$item->usedSince->diffForHumans()}}</div>
+                                @endif
                             @else
-                                <a href="">TAKE IT</a>
+                                <span class="float-right">
+                                    <form action="/item/{{$item->id}}" method="POST">
+                                        <button type="button" class="btn btn-success">Take It</button>
+                                    </form>
+                                </span>
                             @endif
                         </li>
                     @empty
