@@ -19,7 +19,7 @@
             <div class="card mt-4">
                 <div class="card-header">
                     Product: <strong>{{$product['name']}}</strong>
-                    <span class="d-inline-block text-truncat float-right">Edit - Delete</span>
+                    @include ('product.buttons')
                 </div>
 
                 <div class="card-body">
@@ -28,6 +28,7 @@
                         </div>
                     @endif
 
+                    <strong>Items:</strong>
                     <ul>
                     @forelse ($product->items as $item)
                         <li><a href="/item/{{ $item->id }}">{{ $item->name }}</a></li>
