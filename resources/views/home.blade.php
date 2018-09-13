@@ -16,23 +16,29 @@
 
                     <h4>Your itens</h4>
                     @forelse ($items as $item)
-                        <li>
-                            <strong>{{$item->name}}</strong> ({{$item->pname}})
+                        <hr class="ml-5 mr-5">
+                        <li class="mt-1 mb-1">
+                            <strong>{{$item->name}}</strong> ({{$item->product->name}})
 
                             @if ($item->usedBy)
                                 @if ($item->usedBy == \Auth::id())
                                     <span class="float-right">
-                                        <form action="/item/{{$item->id}}" method="POST">
-                                            <button type="button" class="btn btn-danger" disabled>Return It</button>
+                                        <form action="/return" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="item" value="{{$item->id}}"> 
+                                            <button type="submit" class="btn-xm btn-danger">Return It</button>
                                         </form>
                                     </span>
+                                    <span class="float-right mr-3"><em>{{\Carbon\Carbon::parse($item->updated_at)->diffForHumans()}}</em></span>
                                 @else
-                                    <div class="alert alert-danger" role="alert">In use by {{$item->usedBy}}, since {{$item->usedSince->diffForHumans()}}</div>
+                                    <div class="alert alert-danger" role="alert">In use by {{$item->usedBy}}, since {{$item->updated_at->diffForHumans()}}</div>
                                 @endif
                             @else
                                 <span class="float-right">
-                                    <form action="/item/{{$item->id}}" method="POST">
-                                        <button type="button" class="btn btn-success">Take It</button>
+                                    <form action="/take" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="item" value="{{$item->id}}"> 
+                                        <button type="submit" class="btn-xm btn-success">Take It</button>
                                     </form>
                                 </span>
                             @endif
