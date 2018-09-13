@@ -16,6 +16,7 @@
                         </div>
                     @endif
 
+                    <strong>Other items from the same product:</strong>
                     <ul>
                     @forelse ($otherItems as $otherItem)
                         @if (!$otherItem->usedBy)
@@ -27,6 +28,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="float-right mt-2 mr-4"><a href="{{ URL::previous() }}">BACK</a></div>
         </div>
     </div>
 </div>
