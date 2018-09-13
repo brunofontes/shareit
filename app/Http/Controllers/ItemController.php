@@ -39,10 +39,19 @@ class ItemController extends Controller
             ]
         );
 
-        $id = Item::insertGetId(['name' => request('item'), 'product_id' => request('product_id')]); //Just remember to add the fillable on Model to make this work
-        \DB::table('item_user')->insert([ 'user_id' => \Auth::id(), 'item_id' => $id]);
+        $user = \App\User::find(\Auth::id());
+        $user->items()->create(['name' => request('item'), 'product_id' => request('product_id')]);
 
         return redirect('product/'.request('product_id'));
+    }
+
+    public function delete(Request $request)
+    {
+        $request->validate(['item' => 'required']);
+        $item = \App\User::find(\Auth::id())->items()->find(request('item'));
+        $product = $item->product_id;
+        $item->delete();
+        return redirect('product/' . $product);
     }
 
 }
