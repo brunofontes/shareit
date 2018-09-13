@@ -12,9 +12,11 @@
 
 
         <!-- DELETE BUTTON -->
-        <form action="/item/{{$item->id}}" method="POST">
+        <form action="/item/" method="POST">
             @method('DELETE')
-            <button type="button" class="btn-sm btn-danger">Delete</button>
+            {{ csrf_field() }}
+            <input type="hidden" name="item" value="{{$item->id}}"> 
+            <button type="submit" class="btn-sm btn-danger">Delete</button>
         </form>
 
 
