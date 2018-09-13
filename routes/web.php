@@ -22,7 +22,10 @@ Route::post('/product', 'ProductController@store')->middleware('auth');
 Route::get('/item', 'ItemController@index')->middleware('auth');
 Route::get('/item/{item}', 'ItemController@show')->middleware('auth');
 Route::post('/item', 'ItemController@store')->middleware('auth');
-Route::delete('/item/{item}', 'ItemController@delete')->middleware('auth');
+Route::delete('/item', 'ItemController@delete')->middleware('auth');
+
+Route::post('/take', 'TakeController@store')->middleware('auth');
+Route::post('/return', 'ReturnController@store')->middleware('auth');
 
 Auth::routes();
 
