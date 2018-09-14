@@ -21,6 +21,13 @@ class CreateItemsTable extends Migration
             $table->integer('waiting_user_id')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('item_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('item_id');
+            $table->integer('user_id');
+            $table->primary(['item_id', 'user_id']);
+        });
     }
 
     /**
@@ -31,5 +38,6 @@ class CreateItemsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('items');
+        Schema::dropIfExists('item_user');
     }
 }
