@@ -27,6 +27,9 @@ Route::delete('/item', 'ItemController@delete')->middleware('auth');
 Route::post('/take', 'TakeController@store')->middleware('auth');
 Route::post('/return', 'ReturnController@store')->middleware('auth');
 
+Route::post('/user', 'UserController@store')->middleware('auth');
+Route::delete('/user', 'UserController@delete')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
