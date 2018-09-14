@@ -39,18 +39,40 @@ class UserController extends Controller
     {
         $this->validate($request, ['email' => 'required', 'item_id' => 'required']);
         
-        $user = User::where('email', request('email'))->get();
+        $userArray = User::where('email', request('email'))->get();
         
-        if (count($user) == 0) {
+        if (count($userArray) == 0) {
             return back()->withErrors("The e-mail address is not registered yet.");
         }
         
         $item = Item::findOrFail(request('item_id'));
         if ($item->product->user_id == \Auth::id()) {
-            User::findOrFail($user[0]->id)->items()->attach(request('item_id'));
-            //$user->items()->attach(request('item_id'));
+            User::findOrFail($userArray[0]->id)->items()->syncWithoutDetaching([request('item_id')]);
         } else {
             return back()->withErrors("You cannot add a user to a product that is not yourse.");
+        }
+        return back();
+    }
+
+    /**
+     * Delete the specified attachment.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+        $this->validate($request, ['user_id' => 'required', 'item_id' => 'required']);
+        
+        $item = Item::findOrFail(request('item_id'));
+
+        if ($item->product->user_id == \Auth::id()) {
+            $returnItem = User::findOrFail(request('user_id'))->items()->findOrFail(request('item_id'));
+            $returnItem->usedBy = null;
+            $returnItem->save();
+            User::findOrFail(request('user_id'))->items()->detach([request('item_id')]);
+        } else {
+            return back()->withErrors("You cannot remove a user from a product that is not yourse.");
         }
         return back();
     }
