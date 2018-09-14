@@ -11,9 +11,10 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         if (!$item || $item->product->user_id != \Auth::id()) return back();
+        $users = $item->users()->get();
 
         $otherItems = Item::where([['product_id', $item->product_id], ['id', '!=', $id]])->get();
-        return view('item', compact('item', 'otherItems'));
+        return view('item', compact('item', 'otherItems', 'users'));
     }
 
     public function index()
@@ -39,8 +40,8 @@ class ItemController extends Controller
             ]
         );
 
-        $user = \App\User::find(\Auth::id());
-        $user->items()->create(['name' => request('item'), 'product_id' => request('product_id')]);
+        $authUser = \App\User::find(\Auth::id());
+        $authUser->items()->create(['name' => request('item'), 'product_id' => request('product_id')]);
 
         return redirect('product/'.request('product_id'));
     }
