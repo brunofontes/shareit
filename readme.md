@@ -7,7 +7,7 @@ Cada usuário, identificado por e-mail, pode ter outros amigos
 [x] usuário(nome, email)
 [x] product[site/software](nome, admin)
 [ ] usersPerItem(productID, userID)
-[x] item[licença](nome, productID, usedBy, usedSince)
+[x] item[licença](nome, productID, used_by, usedSince)
 [ ] waiting(userID, itemID, waitingSince)
 
 ## VIEWS

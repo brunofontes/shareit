@@ -11,7 +11,7 @@ class TakeController extends Controller
     public function store(Request $request)
     {
         $item = User::find(\Auth::id())->items()->find(request('item'));
-        $item->usedBy = \Auth::id();
+        $item->used_by = \Auth::id();
         $item->save();
         return redirect('home');
     }
