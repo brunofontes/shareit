@@ -19,7 +19,7 @@
                     <strong>Other items from the same product:</strong>
                     <ul>
                     @forelse ($otherItems as $otherItem)
-                        @if (!$otherItem->usedBy)
+                        @if (!$otherItem->used_by)
                             <li><a href="/item/{{ $otherItem->id }}">{{ $otherItem->name }}</a></li>
                         @endif
                     @empty

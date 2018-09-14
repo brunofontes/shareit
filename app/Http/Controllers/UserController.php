@@ -68,7 +68,7 @@ class UserController extends Controller
 
         if ($item->product->user_id == \Auth::id()) {
             $returnItem = User::findOrFail(request('user_id'))->items()->findOrFail(request('item_id'));
-            $returnItem->usedBy = null;
+            $returnItem->used_by = null;
             $returnItem->save();
             User::findOrFail(request('user_id'))->items()->detach([request('item_id')]);
         } else {

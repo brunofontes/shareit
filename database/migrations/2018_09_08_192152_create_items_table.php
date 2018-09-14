@@ -17,8 +17,8 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('product_id');
-            $table->integer('usedBy')->nullable();
-            $table->dateTime('usedSince')->nullable();
+            $table->integer('used_by')->nullable();
+            $table->integer('waiting_user_id')->nullable();
             $table->timestamps();
         });
     }

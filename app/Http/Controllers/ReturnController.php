@@ -10,7 +10,7 @@ class ReturnController extends Controller
     public function store(Request $request)
     {
         $item = User::find(\Auth::id())->items()->find(request('item'));
-        $item->usedBy = null;
+        $item->used_by = null;
         $item->save();
 
         return redirect('home');
