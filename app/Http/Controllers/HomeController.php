@@ -50,7 +50,7 @@ class HomeController extends Controller
             }
 
             if ($item->waiting_user_id && !isset($users[$item->waiting_user_id])) {
-                $users[$item->waiting_user_id] = $this->findName($item, $item->waiting_user_id);
+                $users[$item->waiting_user_id] = $this->findName($item->users, $item->waiting_user_id);
             }
         }
         return view('home', compact('items', 'users'));

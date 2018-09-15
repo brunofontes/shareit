@@ -25,7 +25,10 @@ Route::post('/item', 'ItemController@store')->middleware('auth');
 Route::delete('/item', 'ItemController@delete')->middleware('auth');
 
 Route::post('/take', 'TakeController@store')->middleware('auth');
-Route::post('/return', 'ReturnController@store')->middleware('auth');
+Route::delete('/take', 'TakeController@delete')->middleware('auth');
+
+Route::post('/alert', 'AlertController@store')->middleware('auth');
+Route::delete('/alert', 'AlertController@delete')->middleware('auth');
 
 Route::post('/user', 'UserController@store')->middleware('auth');
 Route::delete('/user', 'UserController@delete')->middleware('auth');
