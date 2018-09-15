@@ -15,4 +15,13 @@ class TakeController extends Controller
         $item->save();
         return redirect('home');
     }
+
+    public function delete(Request $request)
+    {
+        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item->used_by = null;
+        $item->save();
+
+        return redirect('home');
+    }
 }
