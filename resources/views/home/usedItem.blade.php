@@ -1,12 +1,15 @@
 @if ($item->used_by == \Auth::id())
     <span class="float-right">
-        <form action="/return" method="POST">
+        <form action="/take" method="POST">
             {{ csrf_field() }}
+            @method('DELETE')
             <input type="hidden" name="item" value="{{$item->id}}"> 
             <button type="submit" class="btn btn-sm btn-danger">Return It</button>
         </form>
     </span>
     <span class="float-right mr-3"><em>{{\Carbon\Carbon::parse($item->updated_at)->diffForHumans()}}</em></span>
+
+
 @else
     <span class="float-right">
         <form action="/alert" method="POST">
