@@ -22,6 +22,7 @@ Route::post('/product', 'ProductController@store')->middleware('auth');
 Route::get('/item', 'ItemController@index')->middleware('auth');
 Route::get('/item/{item}', 'ItemController@show')->middleware('auth');
 Route::post('/item', 'ItemController@store')->middleware('auth');
+Route::patch('/item', 'ItemController@patch')->middleware('auth');
 Route::delete('/item', 'ItemController@delete')->middleware('auth');
 
 Route::post('/take', 'TakeController@store')->middleware('auth');

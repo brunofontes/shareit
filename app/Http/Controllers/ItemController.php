@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use \App\Item;
+use \App\User;
+use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
@@ -19,7 +20,6 @@ class ItemController extends Controller
 
     public function index()
     {
-        //TODO: Fazer innerjoint com tabela de users por item
         $items = Item::where('user_id', \Auth::id())->get();
         return view('item.index', compact('items'));
     }
@@ -40,19 +40,35 @@ class ItemController extends Controller
             ]
         );
 
-        $authUser = \App\User::find(\Auth::id());
+        $authUser = User::find(\Auth::id());
         $authUser->items()->create(['name' => request('item'), 'product_id' => request('product_id')]);
 
         return redirect('product/'.request('product_id'));
     }
 
+    public function patch(Request $request)
+    {
+        $request->validate(['item' => 'required', 'name' => 'required']);
+        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item->name = request('name');
+        $item->save();
+        return redirect('item/'.request('item'));
+    }
+
     public function delete(Request $request)
     {
         $request->validate(['item' => 'required']);
-        $item = \App\User::find(\Auth::id())->items()->find(request('item'));
+        $item = User::find(\Auth::id())
+            ->items()->with('users')->find(request('item'));
         $product = $item->product_id;
+
+        //Detach users from this item
+        foreach ($item->users as $user) {
+            User::findOrFail($user->id)->items()->detach($item->id);
+        }
+
+        //Delete item
         $item->delete();
         return redirect('product/' . $product);
     }
-
 }
