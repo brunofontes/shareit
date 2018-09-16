@@ -23,7 +23,7 @@
                 {{ csrf_field() }}
                 <input type="hidden" name="item" value="{{$item->id}}"> 
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger">Edit</button>
             </div>
         </form>
 
