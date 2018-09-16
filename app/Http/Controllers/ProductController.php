@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         //TODO: Delete all items with all users for the product
         $request->validate(['product' => 'required']);
-        $item = User::find(\Auth::id())
+        $item = User::findOrFail(\Auth::id())
             ->items()->with('users')->find(request('item'));
         $product = $item->product_id;
 
@@ -51,11 +51,12 @@ class ProductController extends Controller
 
     public function patch(Request $request)
     {
-        $request->validate(['item' => 'required', 'name' => 'required']);
-        $item = User::find(\Auth::id())->items()->find(request('item'));
-        $item->name = request('name');
-        $item->save();
-        return redirect('item/'.request('item'));
+        $request->validate(['product' => 'required', 'name' => 'required']);
+        $product = User::find(\Auth::id())->products()->find(request('product'));
+        $product->name = request('name');
+        $product->url = request('url');
+        $product->save();
+        return redirect('product/'.request('product'));
     }
 
     /**
