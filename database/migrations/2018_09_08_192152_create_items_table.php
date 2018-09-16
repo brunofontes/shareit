@@ -26,7 +26,6 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->integer('item_id');
             $table->integer('user_id');
-            $table->primary(['item_id', 'user_id']);
         });
     }
 
