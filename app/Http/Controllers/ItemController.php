@@ -49,7 +49,7 @@ class ItemController extends Controller
     public function patch(Request $request)
     {
         $request->validate(['item' => 'required', 'name' => 'required']);
-        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item = User::findOrFail(\Auth::id())->items()->find(request('item'));
         $item->name = request('name');
         $item->save();
         return redirect('item/'.request('item'));
