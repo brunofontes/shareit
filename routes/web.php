@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/product', 'ProductController@index')->middleware('auth');
 Route::get('/product/{product}', 'ProductController@show')->middleware('auth');
 Route::post('/product', 'ProductController@store')->middleware('auth');
+Route::patch('/product', 'ProductController@patch')->middleware('auth');
+Route::delete('/product', 'ProductController@delete')->middleware('auth');
 
 Route::get('/item', 'ItemController@index')->middleware('auth');
 Route::get('/item/{item}', 'ItemController@show')->middleware('auth');

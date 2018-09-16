@@ -4,19 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-            <form method="POST" action="/product" class="form-inline">
-            <div class="form-group">
-                {{ csrf_field() }}
-                <div class="col"><label for="product">Add Product: </label></div>
-                <div class="col-6"><input type="text" class="form-control" name="product" id="product" placeholder="Book" required></div>
-                <div class="col"><button type="submit" class="btn btn-primary">Insert</button></div>
-            </div>
-            @include ('layouts.errors')
-            </form>
-
             <div class="card mt-4">
-                <div class="card-header">Products</div>
+                <div class="card-header"><strong>Products</strong></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -35,6 +24,11 @@
 
                 </div>
             </div>
+            <div class="card mt-4">
+                <div class="card-header">Add product</div>
+                <div class="card-body">@include('product.addProductForm')</div>
+            </div>
+            <div class="float-right mt-2"><a class="btn btn-secondary" href="/home">Your items</a></div>
         </div>
     </div>
 </div>

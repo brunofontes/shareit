@@ -5,21 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <form method="POST" action="/item" class="form-inline">
-            <div class="form-group">
-                {{ csrf_field() }}
-                <div class="col"><label for="product">Add Item: </label></div>
-                <div class="col-6"><input type="text" class="form-control" name="item" id="item" placeholder="One Hundred Years of Solitude" required></div>
-                <input type="hidden" name="product_id" id="product_id" value="{{ $product['id'] }}" required>
-                <div class="col"><button type="submit" class="btn btn-primary">Insert</button></div>
-            </div>
-            @include ('layouts.errors')
-            </form>
-
             <div class="card mt-4">
                 <div class="card-header">
-                    Product: <strong>{{$product['name']}}</strong>
-                    @include ('product.buttons')
+                    <strong>{{$product['name']}}</strong> 
+                    @if ($product['url'])
+                        (<em><a href="{{$product['url']}}" target="_blank" rel="noopener noreferrer">{{$product['url']}}</a></em>)
+                    @endif
+                    <span class="d-inline-block text-truncat float-right">
+                    <div class="btn-group" role="group">
+                        @include ('product.editButton')
+                        @include ('product.deleteButton')
+                    </div>
+                    </span>
                 </div>
 
                 <div class="card-body">
@@ -38,6 +35,13 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="card mt-4">
+                <div class="card-header">Add item</div>
+                <div class="card-body">@include('product.addItemForm')</div>
+            </div>
+            
+            <div class="float-right mt-2"><a class="btn btn-secondary" href="/product">BACK</a></div>
         </div>
     </div>
 </div>
