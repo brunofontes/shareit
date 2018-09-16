@@ -18,7 +18,15 @@
                             <hr class="m-3">
                         @endif
                         <div class="my-4 p-2">
+                            @if ($item->product->url)
+                                <a href="{{$item->product->url}}" class="link-unstyled" target="_blank" rel="noopener noreferrer">
+                            @endif
+
                             <strong>{{$item->name}}</strong> ({{$item->product->name}})
+
+                            @if ($item->product->url)
+                                </a>
+                            @endif
 
                             @if ($item->used_by)
                                 @include('home.usedItem')
