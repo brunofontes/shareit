@@ -16,26 +16,26 @@ Route::get('/', function () {
 });
 
 Route::get('/product', 'ProductController@index')->middleware('auth');
-Route::get('/product/{product}', 'ProductController@show')->middleware('auth');
-Route::post('/product', 'ProductController@store')->middleware('auth');
-Route::patch('/product', 'ProductController@patch')->middleware('auth');
-Route::delete('/product', 'ProductController@delete')->middleware('auth');
+Route::get('/product/{product}', 'ProductController@show')->middleware('verified');
+Route::post('/product', 'ProductController@store')->middleware('verified');
+Route::patch('/product', 'ProductController@patch')->middleware('verified');
+Route::delete('/product', 'ProductController@delete')->middleware('verified');
 
-Route::get('/item', 'ItemController@index')->middleware('auth');
-Route::get('/item/{item}', 'ItemController@show')->middleware('auth');
-Route::post('/item', 'ItemController@store')->middleware('auth');
-Route::patch('/item', 'ItemController@patch')->middleware('auth');
-Route::delete('/item', 'ItemController@delete')->middleware('auth');
+Route::get('/item', 'ItemController@index')->middleware('verified');
+Route::get('/item/{item}', 'ItemController@show')->middleware('verified');
+Route::post('/item', 'ItemController@store')->middleware('verified');
+Route::patch('/item', 'ItemController@patch')->middleware('verified');
+Route::delete('/item', 'ItemController@delete')->middleware('verified');
 
-Route::post('/take', 'TakeController@store')->middleware('auth');
-Route::delete('/take', 'TakeController@delete')->middleware('auth');
+Route::post('/take', 'TakeController@store')->middleware('verified');
+Route::delete('/take', 'TakeController@delete')->middleware('verified');
 
-Route::post('/alert', 'AlertController@store')->middleware('auth');
-Route::delete('/alert', 'AlertController@delete')->middleware('auth');
+Route::post('/alert', 'AlertController@store')->middleware('verified');
+Route::delete('/alert', 'AlertController@delete')->middleware('verified');
 
-Route::post('/user', 'UserController@store')->middleware('auth');
-Route::delete('/user', 'UserController@delete')->middleware('auth');
+Route::post('/user', 'UserController@store')->middleware('verified');
+Route::delete('/user', 'UserController@delete')->middleware('verified');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
