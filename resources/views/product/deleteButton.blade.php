@@ -16,7 +16,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <form action="/delete" method="POST">
+    <form action="/product" method="POST">
         @method('DELETE')
         {{ csrf_field() }}
         <input type="hidden" name="product" value="{{$product->id}}"> 

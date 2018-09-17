@@ -58,17 +58,11 @@ class ItemController extends Controller
     public function delete(Request $request)
     {
         $request->validate(['item' => 'required']);
-        $item = User::find(\Auth::id())
+        $item = User::findOrFail(\Auth::id())
             ->items()->with('users')->find(request('item'));
         $product = $item->product_id;
 
-        //Detach users from this item
-        foreach ($item->users as $user) {
-            User::findOrFail($user->id)->items()->detach($item->id);
-        }
-
-        //Delete item
-        $item->delete();
+        Item::deleteAndDetach($item);
         return redirect('product/' . $product);
     }
 }
