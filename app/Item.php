@@ -18,13 +18,14 @@ class Item extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function free($product_id, $user_id)
+    public static function deleteAndDetach($item)
     {
-        return $query->where([
-            ['user_id', $user_id],
-            ['product_id', $product_id],
-            ['used_by', ''],
-        ]);
-    }
+        //Detach users from this item
+        foreach ($item->users as $user) {
+            User::findOrFail($user->id)->items()->detach($item->id);
+        }
 
+        //Delete item
+        $item->delete();
+    }
 }

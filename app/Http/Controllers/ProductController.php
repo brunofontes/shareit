@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use \App\Product;
+use \App\Item;
 use \App\User;
+use \App\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -33,20 +34,18 @@ class ProductController extends Controller
      */
     public function delete(Request $request)
     {
-        //TODO: Delete all items with all users for the product
         $request->validate(['product' => 'required']);
-        $item = User::findOrFail(\Auth::id())
-            ->items()->with('users')->find(request('item'));
-        $product = $item->product_id;
+        $product = User::findOrFail(\Auth::id())
+            ->products()->with('items')->find(request('product'));
 
         //Detach users from this item
-        foreach ($item->users as $user) {
-            User::findOrFail($user->id)->items()->detach($item->id);
+        foreach ($product->items as $item) {
+            Item::deleteAndDetach($item);
         }
 
-        //Delete item
-        $item->delete();
-        return redirect('product/' . $product);
+        //Delete product
+        $product->delete();
+        return redirect('product');
     }
 
     public function patch(Request $request)
