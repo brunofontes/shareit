@@ -12,6 +12,9 @@ class TakeController extends Controller
     public function store(Request $request)
     {
         $item = User::find(\Auth::id())->items()->find(request('item'));
+        if ($item->used_by) {
+            return back()->withErrors("This item is already taken");
+        }
         $item->used_by = \Auth::id();
         $item->save();
         return redirect('home');
