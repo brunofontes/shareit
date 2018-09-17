@@ -39,3 +39,6 @@ Route::delete('/user', 'UserController@delete')->middleware('verified');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/help', function () {
+    return view('help');
+});
