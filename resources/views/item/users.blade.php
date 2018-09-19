@@ -31,7 +31,7 @@
 <div class="container-fluid">
     <div class="form-group row mt-2">
         {{ csrf_field() }}
-        <div class="col-sm-2 col-lg-1"><label for="name">E-mail: </label></div>
+        <div class="col-sm-2 col-lg-auto"><label for="name">E-mail: </label></div>
         <div class="col-xs-12 col-sm mb-3"><input type="email" class="form-control" name="email" id="email" placeholder="name@domain.com" required></div>
         <input type="hidden" name="item_id" id="item_id" value="{{ $item['id'] }}" required>
         <div class="col-sm-2 col-lg-1 mr-4"><button type="submit" class="btn btn-primary">Insert</button></div>
