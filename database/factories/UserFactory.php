@@ -25,6 +25,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
+        'url' => $faker->url,
         'user_id' => function () {
             return factory(App\User::class)->create()->id;
         },
