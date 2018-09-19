@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Request;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -36,5 +37,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function items()
     {
         return $this->belongsToMany(Item::class);
+    }
+
+    /**
+     * Return the logged in user
+     * 
+     * @return \App\User
+     */
+    public static function loggedIn()
+    {
+        return (new static)->findOrFail(\Auth::id());
     }
 }

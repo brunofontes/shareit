@@ -17,4 +17,14 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Return the products from logged in user
+     * 
+     * @return \App\Product
+     */
+    public static function fromAuthUser()
+    {
+        return (new static)->where('user_id', \Auth::id());
+    }
 }

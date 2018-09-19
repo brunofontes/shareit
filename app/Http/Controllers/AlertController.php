@@ -10,7 +10,7 @@ class AlertController extends Controller
 {
     public function store(Request $request)
     {
-        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item = User::loggedIn()->items()->find(request('item'));
         $item->waiting_user_id = \Auth::id();
         $item->timestamps = false;
         $item->save();
@@ -26,7 +26,7 @@ class AlertController extends Controller
 
     public function delete(Request $request)
     {
-        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item = User::loggedIn()->items()->find(request('item'));
         $item->waiting_user_id = null;
         $item->timestamps = false;
         $item->save();

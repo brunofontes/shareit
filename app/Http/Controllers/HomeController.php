@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function index()
     {
         $users = [];
-        $items = User::find(\Auth::id())->items()->with('users')->get();
+        $items = User::loggedIn()->items()->with('users')->get();
 
         foreach ($items as $item) {
             if ($item->used_by && !isset($users[$item->used_by])) {

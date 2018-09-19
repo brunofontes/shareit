@@ -20,7 +20,7 @@ class ItemController extends Controller
 
     public function index()
     {
-        $items = Item::where('user_id', \Auth::id())->get();
+        $items = Item::fromAuthUser()->get();
         return view('item.index', compact('items'));
     }
 
@@ -40,7 +40,7 @@ class ItemController extends Controller
             ]
         );
 
-        $authUser = User::find(\Auth::id());
+        $authUser = User::loggedIn();
         $authUser->items()->create(['name' => request('item'), 'product_id' => request('product_id')]);
 
         return redirect('product/'.request('product_id'));
@@ -49,7 +49,7 @@ class ItemController extends Controller
     public function patch(Request $request)
     {
         $request->validate(['item' => 'required', 'name' => 'required']);
-        $item = User::findOrFail(\Auth::id())->items()->find(request('item'));
+        $item = User::loggedIn()->items()->find(request('item'));
         $item->name = request('name');
         $item->save();
         return redirect('item/'.request('item'));
@@ -58,7 +58,7 @@ class ItemController extends Controller
     public function delete(Request $request)
     {
         $request->validate(['item' => 'required']);
-        $item = User::findOrFail(\Auth::id())
+        $item = User::loggedIn()
             ->items()->with('users')->find(request('item'));
         $product = $item->product_id;
 

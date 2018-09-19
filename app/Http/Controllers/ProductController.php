@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('user_id', \Auth::id())->get();
+        $products = Product::fromAuthUser()->get();
         return view('product.index', compact('products'));
     }
 
@@ -35,7 +35,7 @@ class ProductController extends Controller
     public function delete(Request $request)
     {
         $request->validate(['product' => 'required']);
-        $product = User::findOrFail(\Auth::id())
+        $product = User::loggedIn()
             ->products()->with('items')->find(request('product'));
 
         //Detach users from this item
@@ -51,7 +51,7 @@ class ProductController extends Controller
     public function patch(Request $request)
     {
         $request->validate(['product' => 'required', 'name' => 'required']);
-        $product = User::find(\Auth::id())->products()->find(request('product'));
+        $product = User::loggedIn()->products()->find(request('product'));
         $product->name = request('name');
         $product->url = request('url');
         $product->save();
@@ -65,7 +65,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::where('user_id', \Auth::id())->find($id);
+        $product = Product::fromAuthUser()->find($id);
         return view('product.show', compact('product'));
     }
 }
