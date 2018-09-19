@@ -62,10 +62,17 @@ class ProductController extends Controller
      * Show a specified Product
      * 
      * @param (int) $id The product id
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $product = Product::fromAuthUser()->find($id);
+
+        if (!$product) {
+            return back();
+
+        }
         return view('product.show', compact('product'));
     }
 }
