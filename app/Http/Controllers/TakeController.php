@@ -11,7 +11,7 @@ class TakeController extends Controller
 {
     public function store(Request $request)
     {
-        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item = User::loggedIn()->items()->find(request('item'));
         if ($item->used_by) {
             return back()->withErrors("This item is already taken");
         }
@@ -22,7 +22,7 @@ class TakeController extends Controller
 
     public function delete(Request $request)
     {
-        $item = User::find(\Auth::id())->items()->find(request('item'));
+        $item = User::loggedIn()->items()->find(request('item'));
         $waiting_id = $item->waiting_user_id;
         $item->used_by = null;
         $item->waiting_user_id = null;

@@ -28,4 +28,14 @@ class Item extends Model
         //Delete item
         $item->delete();
     }
+
+    /**
+     * Return the items from logged in user
+     * 
+     * @return \App\Item
+     */
+    public static function fromAuthUser()
+    {
+        return (new static)->where('user_id', \Auth::id());
+    }
 }
