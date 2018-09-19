@@ -38,9 +38,9 @@
                         <strong>Sharing a product/item</strong>
                         <ol>
                             <li>Go to the <strong><a href="/product">Products</a></strong> page;</li>
-                            <li>Include the Product name and click on it;</li>
-                            <li>Include the Item you want to share and click on it;</li>
-                            <li>Add other people by their subscribed e-mail address.</li>
+                            <li>Include the Product and click on it;</li>
+                            <li>Include an Item that belongs to that Product and click on it;</li>
+                            <li>Add other people with their subscribed e-mail address.</li>
                         </ol>
                     </div>
                     <div>
