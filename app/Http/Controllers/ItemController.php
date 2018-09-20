@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use \App\Item;
 use \App\User;
 use Illuminate\Http\Request;
+use App\FlashMessage as flash;
 
 class ItemController extends Controller
 {
     public function show($id)
     {
         $item = Item::find($id);
-        if (!$item || $item->product->user_id != \Auth::id()) return back();
+        if (!$item || $item->product->user_id != \Auth::id()) {
+            session()->flash(flash::DANGER, "The item doesn't exist.");
+            return back();
+        }
         $users = $item->users()->get();
 
         $otherItems = Item::where([['product_id', $item->product_id], ['id', '!=', $id]])->get();
@@ -28,7 +32,7 @@ class ItemController extends Controller
      * Stores the included item into database
      * As the items are included on the Product view,
      * it must return to there after inclusion
-     * 
+     *
      * @return (view) The product view
      */
     public function store(Request $request)
@@ -43,7 +47,7 @@ class ItemController extends Controller
         $authUser = User::loggedIn();
         $authUser->items()->create(['name' => request('item'), 'product_id' => request('product_id')]);
 
-        return redirect('product/'.request('product_id'));
+        return redirect('product/' . request('product_id'));
     }
 
     public function patch(Request $request)
@@ -52,7 +56,7 @@ class ItemController extends Controller
         $item = User::loggedIn()->items()->find(request('item'));
         $item->name = request('name');
         $item->save();
-        return redirect('item/'.request('item'));
+        return redirect('item/' . request('item'));
     }
 
     public function delete(Request $request)

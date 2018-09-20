@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\FlashMessage;
 
 class RegisterController extends Controller
 {
@@ -72,7 +73,7 @@ class RegisterController extends Controller
 
         \Mail::to($user)->send(new Welcome($user));
 
-        session()->flash('primary', 'Thanks for registering. Please, do not forget to validate your e-mail address.');
+        session()->flash(FlashMessage::PRIMARY, 'Thanks for registering. Please, do not forget to validate your e-mail address.');
 
         return $user;
     }

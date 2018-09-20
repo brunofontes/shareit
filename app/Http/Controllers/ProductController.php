@@ -6,6 +6,7 @@ use \App\Item;
 use \App\User;
 use \App\Product;
 use Illuminate\Http\Request;
+use App\FlashMessage as flash;
 
 class ProductController extends Controller
 {
@@ -70,7 +71,7 @@ class ProductController extends Controller
         $product = Product::fromAuthUser()->find($id);
 
         if (!$product) {
-            session()->flash('danger', "The product doesn't exist or doesn't belongs to you.");
+            session()->flash(flash::DANGER, "The product doesn't exist or doesn't belongs to you.");
             return redirect('/product');
         }
         return view('product.show', compact('product'));
