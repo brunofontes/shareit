@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     /**
      * Stores the included product into database
-     * 
+     *
      * @return (view) The product view
      */
     public function store(Request $request)
@@ -29,7 +29,7 @@ class ProductController extends Controller
 
     /**
      * Delete a specified Product
-     * 
+     *
      * @param (int) $id The product id
      */
     public function delete(Request $request)
@@ -55,14 +55,14 @@ class ProductController extends Controller
         $product->name = request('name');
         $product->url = request('url');
         $product->save();
-        return redirect('product/'.request('product'));
+        return redirect('product/' . request('product'));
     }
 
     /**
      * Show a specified Product
-     * 
+     *
      * @param (int) $id The product id
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,8 +70,8 @@ class ProductController extends Controller
         $product = Product::fromAuthUser()->find($id);
 
         if (!$product) {
+            session()->flash('danger', "The product doesn't exist or doesn't belongs to you.");
             return back();
-
         }
         return view('product.show', compact('product'));
     }
