@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         if (!$product) {
             session()->flash('danger', "The product doesn't exist or doesn't belongs to you.");
-            return back();
+            return redirect('/product');
         }
         return view('product.show', compact('product'));
     }
