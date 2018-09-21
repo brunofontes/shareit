@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use \App\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,10 +18,10 @@ class HomeController extends Controller
 
     /**
      * Get a name from a specific id in a array
-     * 
+     *
      * @param array $array The array of objects with ID and Names
      * @param int   $id    The ID of the user
-     * 
+     *
      * @return string The username of the specified id
      */
     protected function findName($array, $id)
@@ -32,6 +31,19 @@ class HomeController extends Controller
                 return $object->name;
             }
         }
+    }
+
+    /**
+     * Check if the user_id alreay exists on $users array.
+     *
+     * @param array $users   The array with users
+     * @param int   $user_id The user_id to try to find on array
+     *
+     * @return boolean
+     */
+    public function isNewUser($users, $user_id)
+    {
+        return ($user_id && !isset($users[$user_id]));
     }
 
     /**
@@ -45,14 +57,16 @@ class HomeController extends Controller
         $items = User::loggedIn()->items()->with('users')->get();
 
         foreach ($items as $item) {
-            if ($item->used_by && !isset($users[$item->used_by])) {
+            if ($this->isNewUser($users, $item->used_by)) {
                 $users[$item->used_by] = $this->findName($item->users, $item->used_by);
             }
 
-            if ($item->waiting_user_id && !isset($users[$item->waiting_user_id])) {
+            if ($this->isNewUser($users, $item->waiting_user_id)) {
                 $users[$item->waiting_user_id] = $this->findName($item->users, $item->waiting_user_id);
             }
         }
-        return view('home', compact('items', 'users'));
+
+        $products = $items->sortBy('product.name', SORT_NATURAL | SORT_FLAG_CASE)->groupBy('product.name');
+        return view('home', compact('products', 'users'));
     }
 }

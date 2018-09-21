@@ -4,16 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Your items</div>
+            @forelse ($products as $items)
+            <div class="card mb-4">
+                <div class="card-header">{{$items->first()->product->name}}</div>
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    @forelse ($items as $item)
+                    @forelse ($items->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE) as $item)
                     @if (!$loop->first)
                     <hr class="m-3">
                     @endif
@@ -23,7 +18,7 @@
                             <a href="{{$item->product->url}}" class="link-unstyled" target="_blank" rel="noopener noreferrer">
                                 @endif
 
-                                <strong>{{$item->name}}</strong> ({{$item->product->name}})
+                                <strong>{{$item->name}}</strong>
 
                                 @if ($item->product->url)
                             </a>
@@ -42,6 +37,8 @@
                     @endforelse
                 </div>
             </div>
+            @empty
+            @endforelse
         </div>
     </div>
 </div>
