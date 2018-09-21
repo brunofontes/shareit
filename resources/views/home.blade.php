@@ -29,7 +29,7 @@
                             </a>
                             @endif
                         </div>
-                        <div class="align-self-end text-right">
+                        <div class="ml-auto align-self-end text-right">
                             @if ($item->used_by)
                             @include('home.usedItem')
                             @else
