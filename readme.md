@@ -1,16 +1,7 @@
 # Share It
 
-Cada usuário, identificado por e-mail, pode ter outros amigos
+Just a simple tool to share items with friends.
 
-## DB
+It is my first try with Laravel, so I am just learning it. :)
 
-[x] usuário(nome, email)
-[x] product[site/software](nome, admin)
-[ ] usersPerItem(productID, userID)
-[x] item[licença](nome, productID, used_by, usedSince)
-[ ] waiting(userID, itemID, waitingSince)
-
-## VIEWS
-
-- Product (administration)
-- Item (view itens, other itens from the same product if this one is occupied)
+More information about **Share It** [here](https://shareit.brunofontes.net/help).
