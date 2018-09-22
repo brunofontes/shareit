@@ -6,7 +6,10 @@ Hi, {{$username}},
 &nbsp;<br>
 The item <em>{{$item->name}} ({{$item->product->name}})</em> is now available on **Share&nbsp;It**.
 &nbsp;<br>
-&nbsp;<br>
-<a href="https://shareit.brunofontes.net/home">Take it</a> before anyone else.
+**Take It** before anyone else at the website:
+
+@component('mail::button', ['url' => 'https://shareit.brunofontes.net/home'])
+Share It!
+@endcomponent
 
 @endcomponent
