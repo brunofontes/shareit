@@ -14,4 +14,5 @@ yarn-error.log
 .phpunit.result.cache
 mergeAndDeploy.sh
 start_vagrant.sh
+stop_vagrant.sh
 ssh_homestead.sh
