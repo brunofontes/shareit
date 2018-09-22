@@ -3,12 +3,10 @@
 
 Thank's for registering at **Share&nbsp;It!**
 
-Your account was created and it is active. And you? Are you ready to Share It with your friends? :)
+Your account was created, but you still need to activate it. We've sent you another e-mail and we are ready to go!
+
+And you? Are you ready to Share It with your friends? :)
 
 @component('mail::button', ['url' => 'https://shareit.brunofontes.net'])
-Share it!
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
+Share It!
 @endcomponent
