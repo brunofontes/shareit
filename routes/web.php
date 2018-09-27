@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/lang/{locale}', function ($locale) {
+    session(['lang' => $locale]);
+    session()->save();
+    return back();
+});
+
 Route::get('/product', 'ProductController@index')->middleware('verified');
 Route::get('/product/{product}', 'ProductController@show')->middleware('verified');
 Route::post('/product', 'ProductController@store')->middleware('verified');

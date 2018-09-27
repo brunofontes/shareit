@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     @empty
-                    <p>There are no items shared with you yet. <a href="/product">Share an item!</a></p>
+                    <p>@lang('home.no_messages')<a href="/product">@lang('home.share_item')</a></p>
                     @endforelse
                 </div>
             </div>
