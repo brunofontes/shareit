@@ -42,14 +42,22 @@ class UserController extends Controller
         $userArray = User::where('email', request('email'))->get();
         
         if (count($userArray) == 0) {
-            return back()->withErrors("The e-mail address is not registered yet.");
+            return back()->withErrors(
+                \Lang::getFromJson("The e-mail address is not registered yet.")
+            );
         }
         
         $item = Item::findOrFail(request('item_id'));
         if ($item->product->user_id == \Auth::id()) {
-            User::findOrFail($userArray[0]->id)->items()->syncWithoutDetaching([request('item_id')]);
+            User::findOrFail($userArray[0]->id)
+                ->items()
+                ->syncWithoutDetaching([request('item_id')]);
         } else {
-            return back()->withErrors("You cannot add a user to a product that is not yourse.");
+            return back()->withErrors(
+                \Lang::getFromJson(
+                    "You cannot add a user to a product that is not yourse."
+                )
+            );
         }
         return back();
     }
@@ -67,12 +75,20 @@ class UserController extends Controller
         $item = Item::findOrFail(request('item_id'));
 
         if ($item->product->user_id == \Auth::id()) {
-            $returnItem = User::findOrFail(request('user_id'))->items()->findOrFail(request('item_id'));
+            $returnItem = User::findOrFail(request('user_id'))
+                ->items()
+                ->findOrFail(request('item_id'));
             $returnItem->used_by = null;
             $returnItem->save();
-            User::findOrFail(request('user_id'))->items()->detach([request('item_id')]);
+            User::findOrFail(request('user_id'))
+                ->items()
+                ->detach([request('item_id')]);
         } else {
-            return back()->withErrors("You cannot remove a user from a product that is not yourse.");
+            return back()->withErrors(
+                \Lang::getFromJson(
+                    "You cannot remove a user from a product that is not yourse."
+                )
+            );
         }
         return back();
     }

@@ -5,22 +5,22 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Confirmation...</h5>
+        <h5 class="modal-title" id="deleteModalLabel">{{ __('item.confirmation') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <p>Would you like to delete the item <strong>{{$item->name}}</strong>?</p>
-        <p>You will not be able to restore it after deletion.</p>
+        <p>{!! __('item.confirmDeletion', ['itemname' => $item->name]) !!}</p>
+        <p>{!! __('item.notAbleRestore') !!}</p>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('item.close') }}</button>
     <form action="/item/" method="POST">
         @method('DELETE')
         {{ csrf_field() }}
         <input type="hidden" name="item" value="{{$item->id}}"> 
-        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="submit" class="btn btn-danger">{{ __('item.delete') }}</button>
         </form>
     </div>
     </div>

@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-header">
-        Other items from the same product
+        {{ __('item.otherItems') }}
     </div>
 
     <div class="card-body">
@@ -10,7 +10,7 @@
                 <li><a href="/item/{{ $otherItem->id }}">{{ $otherItem->name }}</a></li>
             @endif
         @empty
-            <p>There are no items yet. Include one with the form above.</p>
+            <p>{{ __('item.noItems') }}</p>
         @endforelse
         </ul>
     </div>

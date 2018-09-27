@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use \Lang;
 use \App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -30,6 +31,6 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome');
+        return $this->subject(Lang::getFromJson('Welcome'))->markdown('emails.welcome');
     }
 }

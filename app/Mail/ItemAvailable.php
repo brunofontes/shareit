@@ -32,7 +32,11 @@ class ItemAvailable extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->item->name . ' is available!')
-            ->markdown('emails.itemAvailable');
+        return $this->subject(
+            \Lang::getFromJson(
+                ':itemname is available!', 
+                ['itemname' => $this->item->name]
+            )
+        )->markdown('emails.itemAvailable');
     }
 }
