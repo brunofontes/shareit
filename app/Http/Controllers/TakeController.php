@@ -13,7 +13,11 @@ class TakeController extends Controller
     {
         $item = User::loggedIn()->items()->find(request('item'));
         if ($item->used_by) {
-            return back()->withErrors("This item is already taken");
+            return back()->withErrors(
+                \Lang::getFromJson(
+                    "This item is already taken"
+                )
+            );
         }
         $item->used_by = \Auth::id();
         $item->save();

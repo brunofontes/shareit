@@ -79,10 +79,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">@lang('welcome.Home')</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">@lang('welcome.Login')</a>
+                        <a href="{{ route('register') }}">@lang('welcome.Register')</a>
                     @endauth
                 </div>
             @endif
@@ -94,20 +94,20 @@
 
                 <div class="links">
                     @auth
-                        <a href="/home">Home</a>
-                        <a href="/product">Products</a>
+                        <a href="/home">@lang('welcome.Home')</a>
+                        <a href="/product">@lang('welcome.Products')</a>
                     @else
-                        <a href="/register">Register</a>
-                        <a href="/login">Login</a>
+                        <a href="/login">@lang('welcome.Login')</a>
+                        <a href="/register">@lang('welcome.Register')</a>
                     @endauth
-                        <a href="/help">Help</a>
+                        <a href="/help">@lang('welcome.Help')</a>
                 </div>
                 <div>
                     <br>     
                 </div>
                 <div class="links footer">
-                    <a href="https://brunofontes.net">By Bruno Fontes</a>
-                    <p>© 2018 Bruno Fontes All Rights Reserved</p>
+                    <a href="https://brunofontes.net">@lang('welcome.byAuthor')</a>
+                    <p>@lang('welcome.copyright')</p>
                 </div>
             </div>
         </div>

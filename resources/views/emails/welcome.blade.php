@@ -1,12 +1,17 @@
 @component('mail::message')
-# Welcome, {{$user->name}},
+# @lang('Welcome, :username,', ['username' => $user->name])
 
-Thank's for registering at **Share&nbsp;It!**
 
-Your account was created, but you still need to activate it. We've sent you another e-mail and we are ready to go!
+@lang("Thank's for registering at **Share It!**")
 
-And you? Are you ready to Share It with your friends? :)
+
+@lang("Your account was created, but you still need to activate it. We've sent you another e-mail and we are ready to go!")
+
+
+@lang("And you? Are you ready to Share It with your friends?")
+
 
 @component('mail::button', ['url' => 'https://shareit.brunofontes.net'])
-Share It!
+{{ config('app.name') }}
+@endcomponent
 @endcomponent

@@ -73,7 +73,7 @@ class RegisterController extends Controller
 
         \Mail::to($user)->send(new Welcome($user));
 
-        session()->flash(FlashMessage::PRIMARY, 'Thanks for registering. Please, do not forget to validate your e-mail address.');
+        session()->flash(FlashMessage::PRIMARY, __('Thanks for registering. Please, do not forget to validate your e-mail address.'));
 
         return $user;
     }

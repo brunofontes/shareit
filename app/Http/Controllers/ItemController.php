@@ -13,7 +13,11 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         if (!$item || $item->product->user_id != \Auth::id()) {
-            session()->flash(flash::DANGER, "The item doesn't exist.");
+            session()->flash(flash::DANGER, 
+                \Lang::getFromJson(
+                    "The item doesn't exist."
+                )
+            );
             return back();
         }
         $users = $item->users()->get();

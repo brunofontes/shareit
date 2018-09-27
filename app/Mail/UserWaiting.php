@@ -34,7 +34,14 @@ class UserWaiting extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->waitingUser . ' wants to use ' . $this->item->name)
-            ->markdown('emails.userWaiting');
+        return $this->subject(
+            \Lang::getFromJson(
+                ':waitinguser wants to use :itemname', 
+                [
+                    'waitinguser' => $this->waitingUser, 
+                    'itemname' => $this->item->name
+                ]
+            )
+        )->markdown('emails.userWaiting');
     }
 }

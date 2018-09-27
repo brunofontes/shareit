@@ -71,7 +71,12 @@ class ProductController extends Controller
         $product = Product::fromAuthUser()->find($id);
 
         if (!$product) {
-            session()->flash(flash::DANGER, "The product doesn't exist or doesn't belongs to you.");
+            session()->flash(
+                flash::DANGER, 
+                \Lang::getFromJson(
+                    "The product doesn't exist or doesn't belongs to you."
+                )
+            );
             return redirect('/product');
         }
         return view('product.show', compact('product'));

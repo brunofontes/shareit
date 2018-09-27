@@ -5,8 +5,8 @@
 return [
     'no_messages' => 'Ainda não há itens compartilhados com você.',
     'share_item' => 'Compartilhe um item!',
-    'return' => 'Retornar',
+    'return' => 'Devolver',
     'cancel_alert' => 'Cancelar alerta',
     'alert_me' => 'Alertar',
-    'take' => 'Pegar'
+    'take' => 'Usar'
 ];

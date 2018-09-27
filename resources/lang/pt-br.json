@@ -1,0 +1,50 @@
+{
+    "Reset Password": "Redefinir senha",
+    "E-Mail Address" : "E-mail",
+    "Send Password Reset Link" : "Redefinir senha",
+    "Password" : "Senha",
+    "Confirm Password" : "Confirmar senha",
+    "Login" : "Entrar",
+    "Remember Me" : "Manter conectado",
+    "Forgot Your Password?" : "Esqueceu sua senha?",
+    "Register" : "Cadastrar",
+    "Name" : "Nome",
+    "Logout" : "Desconectar",
+    "Verify Your Email Address" : "Confirme seu e-mail",
+    "A fresh verification link has been sent to your email address." : "Enviamos outro link de confirmação para o seu e-mail.",
+    "Before proceeding, please check your email for a verification link." : "Antes de continuar, use o link de confirmação que enviamos para o seu e-mail.",
+    "If you did not receive the email" : "Se você não recebeu o e-mail",
+    "click here to request another" : "clique aqui para enviar novamente",
+    "Thanks for registering. Please, do not forget to validate your e-mail address." : "Obrigado por se cadastrar. Não esqueça de validar seu e-mail.",
+
+    "Welcome": "Bem-vindo!",
+    "Welcome, :username,": "Bem-vindo, :username,",
+    "Thank's for registering at **Share It!**" : "Obrigado por se registrar no **Share It!**",
+    "Your account was created, but you still need to activate it. We've sent you another e-mail and we are ready to go!" : "Sua conta foi criada, mas você ainda precisa confirmar o seu e-mail para usá-la. Enviamos um outro e-mail com a confirmação.",
+    "And you? Are you ready to Share It with your friends?" : "E você? Está pronto para compartilhar?",
+
+    ":waitinguser wants to use :itemname": ":waitinguser quer usar :itemname",
+    "Hello!": "Olá!",
+    "Verify Email Address" : "Confirme o seu e-mail",
+    "Please click the button below to verify your email address." : "Clique no botão abaixo para confirmar o seu e-mail.",
+    "If you did not create an account, no further action is required." : "Se você não criou uma conta, basta ignorar este e-mail.",
+    "Regards": "Obrigado",
+
+    ":itemname is available!": ":itemname está disponível!",
+    "Hi, :username,": "Olá, :username,",
+    "Good news: :itemname is available!": "Uma boa notícia: :itemname está disponível!",
+    "The item <em>:itemname (:productname)</em> is now available on **Share&nbsp;It**.": "O item <em>:itemname (:productname)</em> já está disponível no **Share&nbsp;It**.",
+    "**Take It** before anyone else at the website:": "Entre no nosso site para usar o item antes de todo mundo.",
+
+    "Are you still using :itemname?": "Você ainda está usando o item :itemname?",
+    "We just want to let you know that :waitinguser asked us to be alerted when this item were available.": "A gente apenas queria dizer que :waitinguser nos pediu para avisar quando esse item estivesse disponível.",
+    "So, if you are not using it anymore, please **Return It** at the website:": "Então, se você não estiver mais usando, por favor, **Devolva** no nosso site:",
+
+    "The e-mail address is not registered yet.": "Esse usuário ainda não está cadastrado.",
+    "You cannot add a user to a product that is not yourse.": "Você não pode adicionar um usuário a um produto que não é seu.",
+    "You cannot remove a user from a product that is not yourse.": "Você não pode remover um usuário de um produto que não é seu.",
+
+    "The item doesn't exist.": "O item não existe.",
+    "The product doesn't exist or doesn't belongs to you.": "O produto não existe ou não é seu.",
+    "This item is already taken": "Esse item já está sendo usado"
+}

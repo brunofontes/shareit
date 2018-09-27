@@ -29,7 +29,7 @@
             @include ('item.otherItems')
 
 
-            <div class="float-right mt-2"><a class="btn btn-secondary" href="/product/{{ $item->product->id }}">BACK</a></div>
+            <div class="float-right mt-2"><a class="btn btn-secondary" href="/product/{{ $item->product->id }}">{{ __('item.back') }}</a></div>
         </div>
     </div>
 </div>
