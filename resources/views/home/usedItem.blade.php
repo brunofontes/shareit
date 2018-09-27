@@ -5,7 +5,7 @@
     {{ csrf_field() }}
     @method('DELETE')
     <input type="hidden" name="item" value="{{$item->id}}">
-    <button type="submit" class="btn btn-sm btn-danger ml-auto">Return It</button>
+    <button type="submit" class="btn btn-sm btn-danger ml-auto">@lang('home.return')</button>
 </form>
 
 
@@ -23,9 +23,9 @@
     <input type="hidden" name="item" value="{{$item->id}}">
     @if ($item->waiting_user_id == \Auth::id())
     @method('DELETE')
-    <button type="submit" class="btn btn-sm btn-outline-danger ml-auto">Cancel Alert</button>
+    <button type="submit" class="btn btn-sm btn-outline-danger ml-auto">@lang('home.cancel_alert')</button>
     @elseif (!$item->waiting_user_id)
-    <button type="submit" class="btn btn-sm btn-outline-secondary ml-auto">Alert me</button>
+    <button type="submit" class="btn btn-sm btn-outline-secondary ml-auto">@lang('home.alert_me')</button>
     @endif
 </form>
 @endif
