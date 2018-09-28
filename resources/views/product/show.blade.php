@@ -25,23 +25,23 @@
                         </div>
                     @endif
 
-                    <strong>Items:</strong>
+                    <strong>{{ __('product.items') }}</strong>
                     <ul>
                     @forelse ($product->items as $item)
                         <li><a href="/item/{{ $item->id }}">{{ $item->name }}</a></li>
                     @empty
-                        <p>There are no items yet. Include one with the form above.</p>
+                        <p>{{ __('product.noItemsYet') }}</p>
                     @endforelse
                     </ul>
                 </div>
             </div>
 
             <div class="card mt-4">
-                <div class="card-header">Add item</div>
+                <div class="card-header">{{ __('product.addItem') }}</div>
                 <div class="card-body">@include('product.addItemForm')</div>
             </div>
             
-            <div class="float-right mt-2"><a class="btn btn-secondary" href="/product">BACK</a></div>
+            <div class="float-right mt-2"><a class="btn btn-secondary" href="/product">{{ __('product.back') }}</a></div>
         </div>
     </div>
 </div>
