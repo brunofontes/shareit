@@ -80,9 +80,11 @@
         <div class="alert alert-danger text-center" role="alert">{{ $flashMsg }}</div>
         @endif
 
-        <main class="py-4">
+        <main class="py-4 mb-5">
             @yield('content')
         </main>
+
+        @include('layouts.footer')
     </div>
 </body>
 
