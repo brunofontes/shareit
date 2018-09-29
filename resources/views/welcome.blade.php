@@ -102,9 +102,12 @@
                     @endauth
                         <a href="/help">@lang('welcome.Help')</a>
                 </div>
-                <div>
-                    <br>     
+                <div class="mt-5 mb-5"><br></div>
+                <div class="links">
+                    <a href="{{ url('/lang/pt-br') }}">Português</a>
+                    <a href="{{ url('/lang/en') }}">English</a>
                 </div>
+                <div class="mt-5 mb-5"><br></div>
                 <div class="links footer">
                     <a href="https://brunofontes.net">@lang('welcome.byAuthor')</a>
                     <p>@lang('welcome.copyright')</p>
