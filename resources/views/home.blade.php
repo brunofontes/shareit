@@ -33,11 +33,11 @@
                         </div>
                     </div>
                     @empty
-                    <p>@lang('home.no_messages')<a href="/product">@lang('home.share_item')</a></p>
                     @endforelse
                 </div>
             </div>
             @empty
+            <p>@lang('home.no_messages') <a href="/product">@lang('home.share_item')</a></p>
             @endforelse
         </div>
     </div>
