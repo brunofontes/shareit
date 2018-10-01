@@ -38,4 +38,16 @@ class Item extends Model
     {
         return (new static)->where('user_id', \Auth::id());
     }
+
+    /**
+     * Return a specified item
+     * 
+     * @return void
+     */
+    public function returnItem()
+    {
+        $this->used_by = null;
+        $this->waiting_user_id = null;
+        $this->save();
+    }
 }
