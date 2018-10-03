@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App;
 use Closure;
 
 class Locale
@@ -15,7 +16,7 @@ class Locale
      */
     public function handle($request, Closure $next)
     {
-        \App::setLocale(session('lang'));
+        App::setLocale(session('lang'));
         return $next($request);
     }
 }
