@@ -15,11 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lang/{locale}', function ($locale) {
-    session(['lang' => $locale]);
-    session()->save();
-    return back();
-});
+Route::get('/lang/{locale}', 'LanguageController@update')->name('language');
 
 Route::get('/product', 'ProductController@index')->middleware('verified');
 Route::get('/product/{product}', 'ProductController@show')->middleware('verified');

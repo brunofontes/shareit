@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,6 +47,23 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public static function loggedIn()
     {
-        return (new static)->findOrFail(\Auth::id());
+        return (new static)->findOrFail(Auth::id());
+    }
+
+    /**
+     * Set the default website language
+     * for the acual user
+     * 
+     * @param string $language The language code
+     *
+     * @return void
+     */
+    public static function setLanguage(string $language)
+    {
+        if (Auth::check()) {
+            $user = self::loggedIn();
+            $user->language = $language;
+            $user->save();
+        }
     }
 }
