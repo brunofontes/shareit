@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\FlashMessage;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -71,7 +72,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        \Mail::to($user)->send(new Welcome($user));
+        Mail::to($user)->send(new Welcome($user));
+
+        $text = "Share it! New user: {$user->name} ($user->email)";
+        Mail::raw($text, function ($message) use ($text) {
+            $message->to('brunofontes.shareit@mailnull.com');
+            $message->subject($text);
+        });
 
         session()->flash(FlashMessage::PRIMARY, __('Thanks for registering. Please, do not forget to validate your e-mail address.'));
 
