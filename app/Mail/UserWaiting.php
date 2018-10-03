@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use Lang;
 use \App\Item;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -35,7 +36,7 @@ class UserWaiting extends Mailable
     public function build()
     {
         return $this->subject(
-            \Lang::getFromJson(
+            Lang::getFromJson(
                 ':waitinguser wants to use :itemname', 
                 [
                     'waitinguser' => $this->waitingUser, 
