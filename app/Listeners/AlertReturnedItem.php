@@ -32,9 +32,9 @@ class AlertReturnedItem
     {
         if ($event->item->waiting_user_id) {
             $user = User::find($event->item->waiting_user_id);
-            Mail::to($user)->send(
-                new ItemAvailable($user->name, $event->item)
-            );
+            Mail::to($user)
+                ->locale($user->language)
+                ->send(new ItemAvailable($user->name, $event->item));
         }
     }
 }
