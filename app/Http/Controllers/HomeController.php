@@ -6,6 +6,8 @@ use \App\User;
 
 class HomeController extends Controller
 {
+    protected $activeUsers = [];
+
     /**
      * Create a new controller instance.
      *
@@ -14,6 +16,46 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $items = User::loggedIn()->items()->with('users')->get();
+
+        foreach ($items as $item) {
+            $this->getUsername($item->users, $item->used_by);
+            $this->getUsername($item->users, $item->waiting_user_id);
+        }
+
+        $products = $items
+            ->sortBy('product.name', SORT_NATURAL | SORT_FLAG_CASE)
+            ->groupBy('product.name');
+
+        return view(
+            'home', 
+            ['products' => $products, 'users' => $this->activeUsers]
+        );
+    }
+
+    /**
+     * Get the username from an specified user id.
+     * 
+     * @param object $itemUsers Array with IDs and usernames
+     * @param int    $id        The user id to search for
+     *
+     * @return void
+     */
+    public function getUsername(object $itemUsers, ?int $id)
+    {
+        if ($id && !isset($this->activeUsers[$id])) {
+            $this->activeUsers[$id] = $this->findName($itemUsers, $id);
+        }
     }
 
     /**
@@ -31,42 +73,5 @@ class HomeController extends Controller
                 return $object->name;
             }
         }
-    }
-
-    /**
-     * Check if the user_id alreay exists on $users array.
-     *
-     * @param array $users   The array with users
-     * @param int   $user_id The user_id to try to find on array
-     *
-     * @return boolean
-     */
-    public function isNewUser($users, $user_id)
-    {
-        return ($user_id && !isset($users[$user_id]));
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = [];
-        $items = User::loggedIn()->items()->with('users')->get();
-
-        foreach ($items as $item) {
-            if ($this->isNewUser($users, $item->used_by)) {
-                $users[$item->used_by] = $this->findName($item->users, $item->used_by);
-            }
-
-            if ($this->isNewUser($users, $item->waiting_user_id)) {
-                $users[$item->waiting_user_id] = $this->findName($item->users, $item->waiting_user_id);
-            }
-        }
-
-        $products = $items->sortBy('product.name', SORT_NATURAL | SORT_FLAG_CASE)->groupBy('product.name');
-        return view('home', compact('products', 'users'));
     }
 }
