@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \Lang;
 use \App\User;
 use \App\Item;
 use \App\Product;
@@ -43,7 +44,7 @@ class UserController extends Controller
         
         if (count($userArray) == 0) {
             return back()->withErrors(
-                \Lang::getFromJson("The e-mail address is not registered yet.")
+                Lang::getFromJson("The e-mail address is not registered yet.")
             );
         }
         
@@ -54,7 +55,7 @@ class UserController extends Controller
                 ->syncWithoutDetaching([request('item_id')]);
         } else {
             return back()->withErrors(
-                \Lang::getFromJson(
+                Lang::getFromJson(
                     "You cannot add a user to a product that is not yourse."
                 )
             );
@@ -85,7 +86,7 @@ class UserController extends Controller
                 ->detach([request('item_id')]);
         } else {
             return back()->withErrors(
-                \Lang::getFromJson(
+                Lang::getFromJson(
                     "You cannot remove a user from a product that is not yourse."
                 )
             );

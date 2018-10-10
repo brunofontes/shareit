@@ -25,7 +25,8 @@ class AlertReturnedItem
      * Send an email to the user that
      * is waiting for the item
      *
-     * @param  ReturnItem  $item
+     * @param ReturnItem $event The return event that contains an item
+     * 
      * @return void
      */
     public function handle(ReturnItem $event)

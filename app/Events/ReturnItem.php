@@ -19,6 +19,8 @@ class ReturnItem
     /**
      * Create a new event instance.
      *
+     * @param Item $item The returned item.
+     * 
      * @return void
      */
     public function __construct(Item $item)
