@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+<script type="text/javascript">    
+    setInterval(function() {
+                  window.location.reload(true);
+                }, 2*60000); //NOTE: period is passed in milliseconds
+</script>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
