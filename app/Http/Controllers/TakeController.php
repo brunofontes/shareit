@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Lang;
-use \App\Item;
-use \App\User;
+use App\Item;
+use App\User;
 use App\Events\ReturnItem;
 use Illuminate\Http\Request;
 
