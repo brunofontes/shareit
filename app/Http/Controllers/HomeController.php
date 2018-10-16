@@ -28,7 +28,11 @@ class HomeController extends Controller
     {
         $items = User::loggedIn()->items()->with('users')->get();
 
+        $numberOfUsedItems = 0;
         foreach ($items as $item) {
+            if (isset($item->used_by)) {
+                $numberOfUsedItems++;
+            }
             $this->getUsername($item->users, $item->used_by);
             $this->getUsername($item->users, $item->waiting_user_id);
         }
@@ -39,7 +43,7 @@ class HomeController extends Controller
 
         return view(
             'home', 
-            ['products' => $products, 'users' => $this->activeUsers]
+            ['products' => $products, 'users' => $this->activeUsers, 'usedItems' => $numberOfUsedItems]
         );
     }
 
