@@ -55,7 +55,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function getUsername(object $itemUsers, ?int $id)
+    protected function getUsername(\Illuminate\Database\Eloquent\Collection $itemUsers, ?int $id)
     {
         if ($id && !isset($this->activeUsers[$id])) {
             $this->activeUsers[$id] = $this->findName($itemUsers, $id);

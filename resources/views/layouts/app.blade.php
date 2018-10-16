@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} {{ isset($usedItems) ? "(${usedItems})" : '' }}</title>
+    <title>{{ config('app.name', 'Laravel') }} {{ isset($usedItems) && $usedItems > 0 ? "(${usedItems})" : '' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
