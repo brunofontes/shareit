@@ -32,7 +32,7 @@
 
     ":itemname is available!": ":itemname está disponível!",
     "Hi, :username,": "Olá, :username,",
-    "Good news: :itemname is available!": "Uma boa notícia: :itemname está disponível!",
+    "Good news: :itemname is available!": "Boa notícia: :itemname está disponível!",
     "The item <em>:itemname (:productname)</em> is now available on **Share&nbsp;It**.": "O item <em>:itemname (:productname)</em> já está disponível no **Share&nbsp;It**.",
     "**Take It** before anyone else at the website:": "Entre no nosso site para usar o item antes de todo mundo.",
 
@@ -46,6 +46,7 @@
 
     "The item doesn't exist.": "O item não existe.",
     "The product doesn't exist or doesn't belongs to you.": "O produto não existe ou não é seu.",
-    "This item is already taken": "Esse item já está sendo usado",
+    "This item is already taken": "Esse item já está sendo usado.",
+    "You cannot return an item that is not with you": "Você não pode devolver um item que não está com você.",
     "Oh! This item has just being returned. Take it before anyone else!": "Opa! Esse item acabou de ser devolvido. Aproveite!"
 }
