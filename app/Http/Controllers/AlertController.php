@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Mail;
 use \App\User;
+use App\FlashMessage;
 use \App\Mail\UserWaiting;
 use Illuminate\Http\Request;
 
