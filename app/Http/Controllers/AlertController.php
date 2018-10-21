@@ -22,6 +22,13 @@ class AlertController extends Controller
     public function store(Request $request)
     {
         $item = User::loggedIn()->items()->find(request('item'));
+        if (!$item->used_by) {
+            session()->flash(
+                FlashMessage::PRIMARY, 
+                __('Oh! This item has just being returned. Take it before anyone else!')
+            );
+            return redirect('home');
+        }
         $item->waiting_user_id = Auth::id();
         $item->timestamps = false;
         $item->save();

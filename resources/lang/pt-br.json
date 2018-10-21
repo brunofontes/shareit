@@ -46,5 +46,6 @@
 
     "The item doesn't exist.": "O item não existe.",
     "The product doesn't exist or doesn't belongs to you.": "O produto não existe ou não é seu.",
-    "This item is already taken": "Esse item já está sendo usado"
+    "This item is already taken": "Esse item já está sendo usado",
+    "Oh! This item has just being returned. Take it before anyone else!": "Opa! Esse item acabou de ser devolvido. Aproveite!"
 }

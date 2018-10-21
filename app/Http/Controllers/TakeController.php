@@ -30,6 +30,7 @@ class TakeController extends Controller
             );
         }
         $item->used_by = Auth::id();
+        $item->waiting_user_id = null;
         $item->save();
         return redirect('home');
     }
