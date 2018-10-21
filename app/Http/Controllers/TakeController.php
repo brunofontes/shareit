@@ -8,6 +8,7 @@ use App\Item;
 use App\User;
 use App\Events\ReturnItem;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 
 /**
  * Responsible to Take and Return an Item.
@@ -24,14 +25,15 @@ class TakeController extends Controller
     public function store(Request $request)
     {
         $item = User::loggedIn()->items()->find(request('item'));
-        if ($item->used_by) {
+
+        try {
+            $item->takeItem();
+        } catch (\Exception $e) {
             return back()->withErrors(
-                Lang::getFromJson("This item is already taken")
+                Lang::getFromJson('This item is already taken')
             );
         }
-        $item->used_by = Auth::id();
-        $item->waiting_user_id = null;
-        $item->save();
+
         return redirect('home');
     }
 
@@ -46,8 +48,17 @@ class TakeController extends Controller
     public function delete(Request $request)
     {
         $item = User::loggedIn()->items()->find(request('item'));
+
+        try {
+            $item->returnItem();
+
+        } catch (\Exception $e) {
+            return back()->withErrors(
+                Lang::getFromJson("You cannot return an item that is not with you")
+            );
+        }
+
         event(new ReturnItem($item));
-        $item->returnItem();
         return redirect('home');
     }
 }

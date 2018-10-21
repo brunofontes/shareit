@@ -29,9 +29,12 @@ class AlertController extends Controller
             );
             return redirect('home');
         }
-        $item->waiting_user_id = Auth::id();
-        $item->timestamps = false;
-        $item->save();
+
+        if ($item->used_by == Auth::id()) {
+            return redirect('home');
+        }
+
+        $item->storeAlert();
 
         $loggedUser = Auth::user()->name;
         $userWithItem = User::find($item->used_by);
@@ -45,10 +48,12 @@ class AlertController extends Controller
     public function delete(Request $request)
     {
         $item = User::loggedIn()->items()->find(request('item'));
-        $item->waiting_user_id = null;
-        $item->timestamps = false;
-        $item->save();
 
+        if ($item->waiting_user_id != Auth::id()) {
+            return redirect('home');
+        }
+
+        $item->removeAlert();
         return redirect('home');
     }
 }
