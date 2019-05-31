@@ -4,7 +4,9 @@
 
 <script type="text/javascript">    
     setInterval(function() {
-                  window.location.reload(true);
+                  if (!document.hasFocus() ) {
+                    window.location.reload(true);
+                  }
                 }, 2*60000); //NOTE: period is passed in milliseconds
 </script>
 
