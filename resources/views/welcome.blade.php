@@ -114,5 +114,6 @@
                 </div>
             </div>
         </div>
+        @include('layouts.tracker')
     </body>
 </html>
