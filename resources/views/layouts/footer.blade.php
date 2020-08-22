@@ -17,3 +17,4 @@
     <!-- Copyright -->
     </div>
 </footer>
+@include('layouts.tracker')
