@@ -3,7 +3,7 @@
     //<![CDATA[
     var owa_baseUrl = 'https://brunofontes.net/owa/';
     var owa_cmds = owa_cmds || [];
-    owa_cmds.push(['setSiteId', {{ config('tracking.id') }}]);
+    owa_cmds.push(['setSiteId', '15a38975230dfe7528d647a1419be7f7']);
     owa_cmds.push(['trackPageView']);
     owa_cmds.push(['trackClicks']);
     owa_cmds.push(['trackDomStream']);
@@ -16,4 +16,4 @@
     }());
     //]]>
     </script>
-    <!-- End Open Web Analytics Code -->
+<!-- End Open Web Analytics Code -->
