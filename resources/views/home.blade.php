@@ -3,11 +3,13 @@
 @section('content')
 
 <script type="text/javascript">    
-    setInterval(function() {
-                  if (!document.hasFocus() ) {
+    setInterval(
+        function() {
+                if (!document.hasFocus() ) {
                     window.location.reload(true);
-                  }
-                }, 2*60000); //NOTE: period is passed in milliseconds
+                }
+        },
+        2*60000); //NOTE: period is passed in milliseconds
 </script>
 
 <div class="container">
