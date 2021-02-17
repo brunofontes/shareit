@@ -31,6 +31,6 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->subject(Lang::getFromJson('Welcome'))->markdown('emails.welcome');
+        return $this->subject(Lang::get('Welcome'))->markdown('emails.welcome');
     }
 }
