@@ -1,0 +1,1 @@
+ssh homestead -t 'cd code/Bruno\ Fontes/shareit; echo; echo -n "Press enter to update Composer..."; read; composer update; echo; echo -n "Press enter to update NPM..."; read; npm update; echo; echo -n "Press enter to exit..."; read'
