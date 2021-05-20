@@ -3,10 +3,8 @@
 namespace App\Listeners;
 
 use App\User;
-use IlluminateAuthEventsLogin;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Auth\Events\Login;
+use IlluminateAuthEventsLogin;
 
 class SetLanguage
 {

@@ -3,10 +3,9 @@
 namespace App;
 
 use Auth;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -42,7 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Return the logged in user
-     * 
+     *
      * @return \App\User
      */
     public static function loggedIn()
@@ -53,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Set the default website language
      * for the acual user
-     * 
+     *
      * @param string $language The language code
      *
      * @return void

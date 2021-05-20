@@ -6,7 +6,6 @@ use \App\Item;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ItemAvailable extends Mailable
 {
@@ -34,7 +33,7 @@ class ItemAvailable extends Mailable
     {
         return $this->subject(
             \Lang::getFromJson(
-                ':itemname is available!', 
+                ':itemname is available!',
                 ['itemname' => $this->item->name]
             )
         )->markdown('emails.itemAvailable');

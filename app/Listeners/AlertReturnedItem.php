@@ -2,12 +2,10 @@
 
 namespace App\Listeners;
 
-use Mail;
-use App\User;
 use App\Events\ReturnItem;
 use App\Mail\ItemAvailable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\User;
+use Mail;
 
 class AlertReturnedItem
 {
@@ -26,7 +24,7 @@ class AlertReturnedItem
      * is waiting for the item
      *
      * @param ReturnItem $event The return event that contains an item
-     * 
+     *
      * @return void
      */
     public function handle(ReturnItem $event)

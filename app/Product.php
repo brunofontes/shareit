@@ -20,7 +20,7 @@ class Product extends Model
 
     /**
      * Return the products from logged in user
-     * 
+     *
      * @return \App\Product
      */
     public static function fromAuthUser()

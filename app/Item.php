@@ -3,9 +3,8 @@
 namespace App;
 
 use Auth;
-use Lang;
-use Illuminate\Database\Eloquent\Model;
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
@@ -34,7 +33,7 @@ class Item extends Model
 
     /**
      * Return the items from logged in user
-     * 
+     *
      * @return \App\Item
      */
     public static function fromAuthUser()
@@ -44,7 +43,7 @@ class Item extends Model
 
     /**
      * Take a specified item
-     * 
+     *
      * @return void
      */
     public function takeItem()
@@ -60,7 +59,7 @@ class Item extends Model
 
     /**
      * Return a specified item
-     * 
+     *
      * @return void
      */
     public function returnItem()
@@ -75,7 +74,7 @@ class Item extends Model
 
     /**
      * Store a waiting user to the item
-     * 
+     *
      * @return void
      */
     public function storeAlert()
@@ -87,7 +86,7 @@ class Item extends Model
 
     /**
      * Remove a waiting user to the item
-     * 
+     *
      * @return void
      */
     public function removeAlert()

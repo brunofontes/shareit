@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Mail\Welcome;
+use App\FlashMessage;
 use App\Http\Controllers\Controller;
+use App\Mail\Welcome;
+use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use App\FlashMessage;
 use Mail;
 
 class RegisterController extends Controller

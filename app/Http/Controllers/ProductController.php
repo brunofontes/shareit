@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use \App\Item;
-use \App\User;
 use \App\Product;
-use Illuminate\Http\Request;
+use \App\User;
 use App\FlashMessage as flash;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -72,7 +72,7 @@ class ProductController extends Controller
 
         if (!$product) {
             session()->flash(
-                flash::DANGER, 
+                flash::DANGER,
                 \Lang::getFromJson(
                     "The product doesn't exist or doesn't belongs to you."
                 )

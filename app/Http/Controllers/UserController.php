@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use \Lang;
-use \App\User;
 use \App\Item;
-use \App\Product;
+use \App\User;
+use \Lang;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

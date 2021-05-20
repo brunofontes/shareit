@@ -2,18 +2,17 @@
 
 namespace App\Mail;
 
-use Lang;
 use \App\Item;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Lang;
 
 class UserWaiting extends Mailable
 {
     public $item;
     public $waitingUser;
-    public $userWithItem; 
+    public $userWithItem;
     use Queueable, SerializesModels;
 
     /**
@@ -37,9 +36,9 @@ class UserWaiting extends Mailable
     {
         return $this->subject(
             Lang::getFromJson(
-                ':waitinguser wants to use :itemname', 
+                ':waitinguser wants to use :itemname',
                 [
-                    'waitinguser' => $this->waitingUser, 
+                    'waitinguser' => $this->waitingUser,
                     'itemname' => $this->item->name
                 ]
             )

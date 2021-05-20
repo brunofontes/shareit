@@ -42,14 +42,14 @@ class HomeController extends Controller
             ->groupBy('product.name');
 
         return view(
-            'home', 
+            'home',
             ['products' => $products, 'users' => $this->activeUsers, 'usedItems' => $numberOfUsedItems]
         );
     }
 
     /**
      * Get the username from an specified user id.
-     * 
+     *
      * @param object $itemUsers Array with IDs and usernames
      * @param int    $id        The user id to search for
      *
