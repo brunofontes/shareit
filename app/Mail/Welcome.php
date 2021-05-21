@@ -2,12 +2,11 @@
 
 namespace App\Mail;
 
-use \Lang;
 use \App\User;
+use \Lang;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Welcome extends Mailable
 {

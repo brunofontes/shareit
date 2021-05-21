@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Mail;
+use \App\Mail\UserWaiting;
 use \App\User;
 use App\FlashMessage;
-use \App\Mail\UserWaiting;
+use Auth;
 use Illuminate\Http\Request;
+use Mail;
 
 class AlertController extends Controller
 {
@@ -17,7 +17,7 @@ class AlertController extends Controller
      * the item is free
      *
      * @param Request $request Form data
-     * 
+     *
      * @return redirect to home
      */
     public function store(Request $request)
@@ -25,7 +25,7 @@ class AlertController extends Controller
         $item = User::loggedIn()->items()->find(request('item'));
         if (!$item->used_by) {
             session()->flash(
-                FlashMessage::PRIMARY, 
+                FlashMessage::PRIMARY,
                 __('Oh! This item has just being returned. Take it before anyone else!')
             );
             return redirect('home');

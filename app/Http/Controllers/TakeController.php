@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Lang;
+use App\Events\ReturnItem;
 use App\Item;
 use App\User;
-use App\Events\ReturnItem;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
+use Lang;
 
 /**
  * Responsible to Take and Return an Item.
@@ -19,7 +17,7 @@ class TakeController extends Controller
      * The user take an item
      *
      * @param Request $request The form data
-     * 
+     *
      * @return home view
      */
     public function store(Request $request)
@@ -42,7 +40,7 @@ class TakeController extends Controller
      * Trigger an event: ReturnItem
      *
      * @param Request $request Form data
-     * 
+     *
      * @return View home
      */
     public function delete(Request $request)
@@ -51,7 +49,6 @@ class TakeController extends Controller
 
         try {
             $item->returnItem();
-
         } catch (\Exception $e) {
             return back()->withErrors(
                 Lang::getFromJson("You cannot return an item that is not with you")

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use \App\Item;
 use \App\User;
-use Illuminate\Http\Request;
 use App\FlashMessage as flash;
+use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
@@ -13,7 +13,8 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         if (!$item || $item->product->user_id != \Auth::id()) {
-            session()->flash(flash::DANGER, 
+            session()->flash(
+                flash::DANGER,
                 \Lang::getFromJson(
                     "The item doesn't exist."
                 )

@@ -2,7 +2,7 @@
 /**
  * Strings from the product pages
  * They are separeted by the file that calls them.
- * Sometimes, a string is used on another file, 
+ * Sometimes, a string is used on another file,
  * so it will stay at the common segment.
  */
 
@@ -22,7 +22,7 @@ return [
     '100yearsSolitude' => 'One Hundred Years of Solitude',
 
      /**
-      * addProductForm.blade.php 
+      * addProductForm.blade.php
       */
     'name' => 'Name:',
     'book' => 'Book',
