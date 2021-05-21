@@ -35,7 +35,7 @@ class UserWaiting extends Mailable
     public function build()
     {
         return $this->subject(
-            Lang::getFromJson(
+            Lang::get(
                 ':waitinguser wants to use :itemname',
                 [
                     'waitinguser' => $this->waitingUser,
