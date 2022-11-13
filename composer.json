@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": "^8.0.2",
-        "fideloper/proxy": "^4.4",
         "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/framework": "^9.19.0",
         "laravel/helpers": "^1.4",
