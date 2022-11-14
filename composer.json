@@ -10,7 +10,8 @@
         "laravel/framework": "^9.19.0",
         "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.4.1",
-        "laravel/ui": "^3.0"
+        "laravel/ui": "^3.0",
+        "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

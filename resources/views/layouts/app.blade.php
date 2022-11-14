@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }} {{ isset($usedItems) && $usedItems > 0 ? "(${usedItems})" : '' }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    @vite('resources/js/app.js')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">

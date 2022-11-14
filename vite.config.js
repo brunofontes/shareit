@@ -8,6 +8,7 @@ export default defineConfig({
         laravel([
             // 'resources/css/app.css',
             'resources/js/app.js',
+            'resources/js/pusher.js',
         ]),
         // react(),
         // vue({

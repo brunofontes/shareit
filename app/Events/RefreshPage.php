@@ -3,16 +3,19 @@
 namespace App\Events;
 
 use \App\Item;
+
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ReturnItem
+class RefreshPage implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
 
     /**
      * Item
@@ -21,10 +24,9 @@ class ReturnItem
      */
     public $item;
 
+
     /**
      * Create a new event instance.
-     *
-     * @param Item $item The returned item.
      *
      * @return void
      */
@@ -40,11 +42,12 @@ class ReturnItem
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('touchedItem');
+        return ['touchedItem'];
     }
 
     public function broadcastAs()
     {
-        return 'ReturnItem';
+        return 'RefreshPage';
     }
+
 }

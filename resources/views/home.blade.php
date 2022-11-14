@@ -2,15 +2,7 @@
 
 @section('content')
 
-<script type="text/javascript">    
-    setInterval(
-        function() {
-                if (!document.hasFocus() ) {
-                    window.location.reload(true);
-                }
-        },
-        2*60000); //NOTE: period is passed in milliseconds
-</script>
+@vite('resources/js/pusher.js')
 
 <div class="container">
     <div class="row justify-content-center">
