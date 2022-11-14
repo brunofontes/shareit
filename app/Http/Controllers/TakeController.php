@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RefreshPage;
 use App\Events\ReturnItem;
 use App\Item;
 use App\User;
@@ -32,6 +33,7 @@ class TakeController extends Controller
             );
         }
 
+        RefreshPage::dispatch($item);
         return redirect('home');
     }
 
@@ -55,7 +57,8 @@ class TakeController extends Controller
             );
         }
 
-        event(new ReturnItem($item));
+        RefreshPage::dispatch($item);
+        ReturnItem::dispatch($item);
         return redirect('home');
     }
 }

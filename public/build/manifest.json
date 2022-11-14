@@ -1,7 +1,21 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.95ac02f4.js",
+    "file": "assets/app.d3c19ffe.js",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.a2e087ef.js"
+    ]
+  },
+  "resources/js/pusher.js": {
+    "file": "assets/pusher.ff5f8d5b.js",
+    "src": "resources/js/pusher.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.a2e087ef.js"
+    ]
+  },
+  "_bootstrap.a2e087ef.js": {
+    "file": "assets/bootstrap.a2e087ef.js"
   }
 }
