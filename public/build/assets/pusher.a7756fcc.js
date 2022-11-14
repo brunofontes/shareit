@@ -1,0 +1,1 @@
+import"https://js.pusher.com/7.2/pusher.min.js";var n=new Pusher("93b3e504421787295454",{cluster:"us2"}),o=n.subscribe("touchedItem");o.bind("RefreshPage",function(e){window.location.reload(),console.log(JSON.stringify(e))});
