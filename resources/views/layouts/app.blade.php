@@ -19,9 +19,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link id="favicon" rel="icon" type="image/png" href="favicon.png" /> 
 </head>
 
 <body>
+    <div hidden id="usedItems">{{ isset($usedItems) && $usedItems > 0 ? $usedItems : '' }}</div>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
