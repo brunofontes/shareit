@@ -6,6 +6,7 @@
  */
 
 import './bootstrap';
+import moment from "moment";
 
 // window.Vue = require('vue');
 
@@ -20,6 +21,18 @@ import './bootstrap';
 // const app = new Vue({
 //     el: '#app'
 // });
+
+function updateTime() {
+    var dates = document.getElementsByClassName("takenItemDate");
+    for (let i = 0; i < dates.length; i++) {
+        let time = dates.item(i).innerText;
+        let fromNow = moment(time).fromNow();
+        let id = "itemPassedTime_" + dates.item(i).id;
+        document.getElementById(id).innerText = fromNow;
+    }
+}
+updateTime();
+setInterval(updateTime, 1 * 60 * 1000);
 
 
 function setFaviconNumber(number) {
@@ -45,3 +58,17 @@ function setFaviconNumber(number) {
 
 usedItems = document.getElementById("usedItems").innerText;
 setFaviconNumber(usedItems);
+
+/**
+ * Source:
+ * https://www.designcise.com/web/tutorial/how-to-detect-if-the-browser-tab-is-active-or-not-using-javascript
+ */
+document.addEventListener('visibilitychange', function (event) {
+    if (document.hidden) {
+        console.log('not visible');
+    } else {
+        updateTime();
+    }
+});
+
+
