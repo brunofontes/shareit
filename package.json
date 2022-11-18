@@ -19,5 +19,8 @@
         "sass": "^1.56.1",
         "sass-loader": "^8.0.2",
         "vite": "^3.2.3"
+    },
+    "dependencies": {
+        "moment": "^2.29.4"
     }
 }

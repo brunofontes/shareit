@@ -1,6 +1,7 @@
 @if ($item->used_by == \Auth::id())
 <form action="/take" method="POST" class="form-inline">
-    <em class="pr-sm-2 ml-auto">{{\Carbon\Carbon::parse($item->updated_at)->diffForHumans()}}</em>
+    <em id="itemPassedTime_{{$item->id}}" class="pr-sm-2 ml-auto">{{\Carbon\Carbon::parse($item->updated_at)->diffForHumans()}}</em>
+    <div hidden class="takenItemDate" id="{{$item->id}}">{{\Carbon\Carbon::parse($item->updated_at)->format('Y-m-d\TH:i:s.uP')}}</div>
     <div class="w-100 d-xm-block d-sm-none"></div>
     {{ csrf_field() }}
     @method('DELETE')
@@ -16,8 +17,9 @@
         @if ($item->waiting_user_id && $item->waiting_user_id != \Auth::id())
         <strong>> {{str_limit($users[$item->waiting_user_id], 15, '...')}}</strong>
         @endif
-        <small>({{$item->updated_at->diffForHumans()}})</small>
+        <small id="itemPassedTime_{{$item->id}}">({{$item->updated_at->diffForHumans()}})</small>
     </em>
+    <div hidden class="takenItemDate" id="{{$item->id}}">{{$item->updated_at->format('Y-m-d\TH:i:s.uP')}}</div>
     <div class="w-100 d-xm-block d-sm-none"></div>
     {{ csrf_field() }}
     <input type="hidden" name="item" value="{{$item->id}}">
