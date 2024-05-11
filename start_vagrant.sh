@@ -1,6 +1,7 @@
 #!/bin/zsh
 export VAGRANT_CWD=/home/bruno/development/Homestead/
 vagrant up
-#builtin cd ~/development/laravelHomestead && /usr/bin/vagrant up && builtin cd -
-#~/Apps/firefox/firefox-bin http://shareit.test
-#~/Apps/firefox/firefox-bin https://mailtrap.io/inboxes/455614/messages
+eval $DEV_BROWSER http://shareit.test \
+https://mailtrap.io/inboxes/455614/messages \
+https://dashboard.pusher.com/apps/1505830/console \
+&

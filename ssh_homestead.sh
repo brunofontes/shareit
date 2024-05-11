@@ -1,1 +1,2 @@
-ssh homestead -t "cd code/Bruno\ Fontes/shareit; bash --login"
+echo "Homestead password is: vagrant"
+ssh homestead -t "cd shareit; bash --login"
