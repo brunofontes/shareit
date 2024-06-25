@@ -6,11 +6,11 @@
     "type": "project",
     "require": {
         "php": "^8.0.2",
-        "inertiajs/inertia-laravel": "^0.6.3",
-        "laravel/framework": "^9.19.0",
+        "inertiajs/inertia-laravel": "^0.6.11",
+        "laravel/framework": "^10.0",
+        "laravel/ui": "^4.0",
         "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.4.1",
-        "laravel/ui": "^3.0",
         "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
@@ -18,11 +18,11 @@
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^6.1",
-        "nunomaduro/larastan": "^0.7.4",
+        "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.9.5",
         "nunomaduro/phpinsights": "*",
-        "phpstan/phpstan": "^0.12.85",
-        "phpunit/phpunit": "^9.0"
+        "phpstan/phpstan": "^1.10.66",
+        "phpunit/phpunit": "^10.0"
     },
     "autoload": {
         "classmap": [
@@ -64,6 +64,6 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
